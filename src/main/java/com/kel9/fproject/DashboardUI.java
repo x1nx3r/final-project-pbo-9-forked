@@ -11,7 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-import com.kel9.fproject.Permintaan;
+import com.kel9.fproject.PermintaanUbah;
+import java.sql.Date;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -24,7 +25,9 @@ import com.kel9.fproject.Permintaan;
  */
 public class DashboardUI extends javax.swing.JFrame {
     private WindowStateManager windowManager; 
-    private Permintaan requestForm;
+    private PermintaanUbah permintaanUbah;
+    private PersediaanUbah persediaanUbah;
+    private PengirimanUbah pengirimanUbah;
     private Timer timer;
 
     /**
@@ -61,17 +64,51 @@ public class DashboardUI extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         transaction_table = new javax.swing.JTable();
         require = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        btn_add = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        addnew2 = new javax.swing.JPanel();
+        tambah_pengiriman_button2 = new javax.swing.JButton();
+        kirim14 = new java.awt.Label();
+        jenis_produk_field1 = new javax.swing.JTextField();
+        kirim15 = new java.awt.Label();
+        kirim16 = new java.awt.Label();
+        kirim17 = new java.awt.Label();
+        kirim18 = new java.awt.Label();
+        kode_pesanan_field = new javax.swing.JTextField();
+        title2 = new java.awt.Label();
+        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        tanggal_pesanan_field1 = new com.toedter.calendar.JDateChooser();
+        pelanggan_field1 = new javax.swing.JTextField();
+        jumlah_pesanan_field1 = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        ubah_permintaan_button = new javax.swing.JButton();
+        kirim19 = new java.awt.Label();
+        status_pemesanan_field1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         supply = new javax.swing.JPanel();
+        addnew1 = new javax.swing.JPanel();
+        kirim7 = new java.awt.Label();
+        tambah_pengiriman_button1 = new javax.swing.JButton();
+        nama_barang_field = new javax.swing.JTextField();
+        kirim8 = new java.awt.Label();
+        kategori_field = new javax.swing.JTextField();
+        kirim9 = new java.awt.Label();
+        kirim10 = new java.awt.Label();
+        kirim11 = new java.awt.Label();
+        kirim12 = new java.awt.Label();
+        id_barang_field = new javax.swing.JTextField();
+        title1 = new java.awt.Label();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        exp_date_field = new com.toedter.calendar.JDateChooser();
+        lokasi_field = new javax.swing.JTextField();
+        jumlah_field = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        ubah_persediaan_button = new javax.swing.JButton();
+        listitem1 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         pengiriman = new javax.swing.JPanel();
         addnew = new javax.swing.JPanel();
         kirim1 = new java.awt.Label();
-        tambah_pengiriman_button = new javax.swing.JButton();
+        ubah_pengiriman_button = new javax.swing.JButton();
         pelanggan_field = new javax.swing.JTextField();
         kirim2 = new java.awt.Label();
         jenis_produk_field = new javax.swing.JTextField();
@@ -85,6 +122,8 @@ public class DashboardUI extends javax.swing.JFrame {
         jenis_pengiriman_field = new javax.swing.JComboBox<>();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         tanggal_pengiriman_field = new com.toedter.calendar.JDateChooser();
+        jSeparator9 = new javax.swing.JSeparator();
+        tambah_pengiriman_button3 = new javax.swing.JButton();
         listitem = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         setting = new javax.swing.JPanel();
@@ -128,6 +167,11 @@ public class DashboardUI extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(238, 238, 238));
         jPanel4.setMaximumSize(new java.awt.Dimension(32767, 200));
         jPanel4.setPreferredSize(new java.awt.Dimension(1270, 200));
+        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel4MouseEntered(evt);
+            }
+        });
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 50));
 
         card1.setBackground(new java.awt.Color(255, 255, 255));
@@ -236,33 +280,166 @@ public class DashboardUI extends javax.swing.JFrame {
 
         require.setLayout(new javax.swing.BoxLayout(require, javax.swing.BoxLayout.Y_AXIS));
 
-        jPanel3.setMaximumSize(new java.awt.Dimension(32767, 120));
-        jPanel3.setMinimumSize(new java.awt.Dimension(379, 20));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1182, 150));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        addnew2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addnew2.setMaximumSize(new java.awt.Dimension(32767, 120));
+        addnew2.setMinimumSize(new java.awt.Dimension(379, 20));
+        addnew2.setPreferredSize(new java.awt.Dimension(1182, 400));
+        addnew2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel3MouseEntered(evt);
+                addnew2MouseEntered(evt);
             }
         });
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 50));
+        addnew2.setLayout(new java.awt.GridBagLayout());
 
-        btn_add.setText("Tambah Permintaan");
-        btn_add.setPreferredSize(new java.awt.Dimension(163, 40));
-        btn_add.addActionListener(new java.awt.event.ActionListener() {
+        tambah_pengiriman_button2.setText("TAMBAH");
+        tambah_pengiriman_button2.setAlignmentX(0.5F);
+        tambah_pengiriman_button2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button2.setPreferredSize(new java.awt.Dimension(100, 40));
+        tambah_pengiriman_button2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_addActionPerformed(evt);
+                tambah_pengiriman_button2ActionPerformed(evt);
             }
         });
-        jPanel3.add(btn_add);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(tambah_pengiriman_button2, gridBagConstraints);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(500, 40));
-        jPanel3.add(jTextField1);
+        kirim14.setText("Status Pemesanan");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        addnew2.add(kirim14, gridBagConstraints);
 
-        jButton1.setText("Cari");
-        jButton1.setPreferredSize(new java.awt.Dimension(72, 40));
-        jPanel3.add(jButton1);
+        jenis_produk_field1.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(jenis_produk_field1, gridBagConstraints);
 
-        require.add(jPanel3);
+        kirim15.setText("Pelanggan");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(kirim15, gridBagConstraints);
+
+        kirim16.setText("Jumlah Pesanan");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(kirim16, gridBagConstraints);
+
+        kirim17.setText("Tanggal Pengiriman");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(kirim17, gridBagConstraints);
+
+        kirim18.setText("Kode Pemesanan");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(kirim18, gridBagConstraints);
+
+        kode_pesanan_field.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(kode_pesanan_field, gridBagConstraints);
+
+        title2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        title2.setText("Tambah Data Permintaan Baru");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(title2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
+        addnew2.add(filler4, gridBagConstraints);
+
+        tanggal_pesanan_field1.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        tanggal_pesanan_field1.setMinimumSize(new java.awt.Dimension(300, 24));
+        tanggal_pesanan_field1.setPreferredSize(new java.awt.Dimension(300, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        addnew2.add(tanggal_pesanan_field1, gridBagConstraints);
+
+        pelanggan_field1.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(pelanggan_field1, gridBagConstraints);
+
+        jumlah_pesanan_field1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlah_pesanan_field1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        addnew2.add(jumlah_pesanan_field1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 10;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        addnew2.add(jSeparator10, gridBagConstraints);
+
+        ubah_permintaan_button.setText("UBAH");
+        ubah_permintaan_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ubah_permintaan_buttonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        addnew2.add(ubah_permintaan_button, gridBagConstraints);
+
+        kirim19.setText("Jenis Produk");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew2.add(kirim19, gridBagConstraints);
+
+        status_pemesanan_field1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diajukan", "Selesai", "Dibatalkan" }));
+        status_pemesanan_field1.setLightWeightPopupEnabled(false);
+        status_pemesanan_field1.setMaximumSize(new java.awt.Dimension(300, 32767));
+        status_pemesanan_field1.setPreferredSize(new java.awt.Dimension(300, 24));
+        status_pemesanan_field1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                status_pemesanan_field1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 7;
+        addnew2.add(status_pemesanan_field1, gridBagConstraints);
+
+        require.add(addnew2);
 
         jTable1.setModel(DatabaseConnect.populatePermintaanTable());
         jScrollPane2.setViewportView(jTable1);
@@ -271,16 +448,163 @@ public class DashboardUI extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Permintaan", require);
 
-        javax.swing.GroupLayout supplyLayout = new javax.swing.GroupLayout(supply);
-        supply.setLayout(supplyLayout);
-        supplyLayout.setHorizontalGroup(
-            supplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1182, Short.MAX_VALUE)
+        supply.setLayout(new javax.swing.BoxLayout(supply, javax.swing.BoxLayout.Y_AXIS));
+
+        addnew1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addnew1.setMaximumSize(new java.awt.Dimension(32767, 120));
+        addnew1.setMinimumSize(new java.awt.Dimension(379, 20));
+        addnew1.setPreferredSize(new java.awt.Dimension(1182, 400));
+        addnew1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                addnew1MouseEntered(evt);
+            }
+        });
+        addnew1.setLayout(new java.awt.GridBagLayout());
+
+        kirim7.setText("Nama Barang");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(kirim7, gridBagConstraints);
+
+        tambah_pengiriman_button1.setText("TAMBAH");
+        tambah_pengiriman_button1.setAlignmentX(0.5F);
+        tambah_pengiriman_button1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button1.setPreferredSize(new java.awt.Dimension(100, 40));
+        tambah_pengiriman_button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambah_pengiriman_button1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(tambah_pengiriman_button1, gridBagConstraints);
+
+        nama_barang_field.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(nama_barang_field, gridBagConstraints);
+
+        kirim8.setText("Kategori");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(kirim8, gridBagConstraints);
+
+        kategori_field.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(kategori_field, gridBagConstraints);
+
+        kirim9.setText("Lokasi");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(kirim9, gridBagConstraints);
+
+        kirim10.setText("Jumlah Barang");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(kirim10, gridBagConstraints);
+
+        kirim11.setText("Tanggal Pengiriman");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(kirim11, gridBagConstraints);
+
+        kirim12.setText("ID Barang");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(kirim12, gridBagConstraints);
+
+        id_barang_field.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(id_barang_field, gridBagConstraints);
+
+        title1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        title1.setText("Tambah Data Barang Baru");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(title1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.insets = new java.awt.Insets(1, 0, 1, 0);
+        addnew1.add(filler3, gridBagConstraints);
+
+        exp_date_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        exp_date_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        exp_date_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        addnew1.add(exp_date_field, gridBagConstraints);
+
+        lokasi_field.setPreferredSize(new java.awt.Dimension(300, 30));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew1.add(lokasi_field, gridBagConstraints);
+
+        jumlah_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlah_fieldActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        addnew1.add(jumlah_field, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        addnew1.add(jSeparator8, gridBagConstraints);
+
+        ubah_persediaan_button.setText("UBAH");
+        ubah_persediaan_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ubah_persediaan_buttonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        addnew1.add(ubah_persediaan_button, gridBagConstraints);
+
+        supply.add(addnew1);
+
+        jTable3.setModel(DatabaseConnect.populatePersediaanTable()
         );
-        supplyLayout.setVerticalGroup(
-            supplyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 748, Short.MAX_VALUE)
-        );
+        listitem1.setViewportView(jTable3);
+
+        supply.add(listitem1);
 
         jTabbedPane2.addTab("Persediaan", supply);
 
@@ -299,20 +623,20 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         addnew.add(kirim1, gridBagConstraints);
 
-        tambah_pengiriman_button.setText("TAMBAH");
-        tambah_pengiriman_button.setAlignmentX(0.5F);
-        tambah_pengiriman_button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tambah_pengiriman_button.setPreferredSize(new java.awt.Dimension(100, 40));
-        tambah_pengiriman_button.addActionListener(new java.awt.event.ActionListener() {
+        ubah_pengiriman_button.setText("UBAH");
+        ubah_pengiriman_button.setAlignmentX(0.5F);
+        ubah_pengiriman_button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ubah_pengiriman_button.setPreferredSize(new java.awt.Dimension(100, 40));
+        ubah_pengiriman_button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tambah_pengiriman_buttonActionPerformed(evt);
+                ubah_pengiriman_buttonActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        addnew.add(tambah_pengiriman_button, gridBagConstraints);
+        addnew.add(ubah_pengiriman_button, gridBagConstraints);
 
         pelanggan_field.setPreferredSize(new java.awt.Dimension(300, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -410,7 +734,28 @@ public class DashboardUI extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         addnew.add(tanggal_pengiriman_field, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        addnew.add(jSeparator9, gridBagConstraints);
+
+        tambah_pengiriman_button3.setText("TAMBAH");
+        tambah_pengiriman_button3.setAlignmentX(0.5F);
+        tambah_pengiriman_button3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tambah_pengiriman_button3.setPreferredSize(new java.awt.Dimension(100, 40));
+        tambah_pengiriman_button3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tambah_pengiriman_button3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        addnew.add(tambah_pengiriman_button3, gridBagConstraints);
 
         pengiriman.add(addnew);
 
@@ -639,14 +984,6 @@ public class DashboardUI extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
-        // TODO add your handling code here:
-        requestForm = new Permintaan();
-        requestForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        requestForm.setLocationRelativeTo(null);
-        requestForm.setVisible(true);
-    }//GEN-LAST:event_btn_addActionPerformed
-
     
     private void jenis_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_pengiriman_fieldActionPerformed
         // TODO add your handling code here:
@@ -675,19 +1012,103 @@ public class DashboardUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_logoutActionPerformed
 
-    private void tambah_pengiriman_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_buttonActionPerformed
+    private void ubah_pengiriman_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_pengiriman_buttonActionPerformed
+        pengirimanUbah = new PengirimanUbah();
+        pengirimanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pengirimanUbah.setLocationRelativeTo(null);
+        pengirimanUbah.setVisible(true);
+    }//GEN-LAST:event_ubah_pengiriman_buttonActionPerformed
+
+    private void tambah_pengiriman_button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button1ActionPerformed
+        insertPersediaanRecord();
+        jTable3.setModel(DatabaseConnect.populatePersediaanTable());
+    }//GEN-LAST:event_tambah_pengiriman_button1ActionPerformed
+
+    private void insertPersediaanRecord() {
+        // Get input data
+        String idBarang = id_barang_field.getText();
+        String namaBarang = nama_barang_field.getText();
+        String kategori = kategori_field.getText();
+        String lokasi = lokasi_field.getText();
+        int jumlah = Integer.parseInt(jumlah_field.getText()); // Assuming jumlah is an integer
+
+        // Get the selected date from the JDateChooser
+        java.util.Date rawDate = exp_date_field.getDate();
+
+        // Optionally, you can format the date as needed
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String expDate = dateFormat.format(rawDate);
+
+        // Check if any field is empty
+        //if (idBarang.isEmpty() || namaBarang.isEmpty() || kategori.isEmpty() || lokasi.isEmpty() || expDate.isEmpty() || jumlah_field.getText().isEmpty()) {
+          //  JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            //return;
+        //}
+
+        // Send data to query function
+        boolean success = DatabaseConnect.insertPersediaanRecord(idBarang, namaBarang, kategori, lokasi, expDate, jumlah);
+
+        // Reset fields if insertion is successful
+        if (success) {
+            id_barang_field.setText("");
+            nama_barang_field.setText("");
+            kategori_field.setText("");
+            lokasi_field.setText("");
+            exp_date_field.setDate(null); // Clear the date chooser
+            jumlah_field.setText("");
+        }
+    }
+        
+    private void jumlah_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_fieldActionPerformed
         // TODO add your handling code here:
+    }//GEN-LAST:event_jumlah_fieldActionPerformed
+
+    private void ubah_persediaan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_persediaan_buttonActionPerformed
+        permintaanUbah = new PermintaanUbah();
+        permintaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        permintaanUbah.setLocationRelativeTo(null);
+        permintaanUbah.setVisible(true);
+    }//GEN-LAST:event_ubah_persediaan_buttonActionPerformed
+
+    private void addnew1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnew1MouseEntered
+        //startTimer();
+    }//GEN-LAST:event_addnew1MouseEntered
+
+    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
+        startTimer();// TODO add your handling code here:
+    }//GEN-LAST:event_jPanel4MouseEntered
+
+    private void tambah_pengiriman_button2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button2ActionPerformed
+        insertPermintaanRecord();
+    }//GEN-LAST:event_tambah_pengiriman_button2ActionPerformed
+
+    private void jumlah_pesanan_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_field1ActionPerformed
+        //
+    }//GEN-LAST:event_jumlah_pesanan_field1ActionPerformed
+
+    private void ubah_permintaan_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubah_permintaan_buttonActionPerformed
+        permintaanUbah = new PermintaanUbah();
+        permintaanUbah.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        permintaanUbah.setLocationRelativeTo(null);
+        permintaanUbah.setVisible(true);
+    }//GEN-LAST:event_ubah_permintaan_buttonActionPerformed
+
+    private void addnew2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addnew2MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addnew2MouseEntered
+
+    private void status_pemesanan_field1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_status_pemesanan_field1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_status_pemesanan_field1ActionPerformed
+
+    private void tambah_pengiriman_button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tambah_pengiriman_button3ActionPerformed
         insertPengirimanRecord();
         jTable2.setModel(DatabaseConnect.populatePengirimanTable());
-    }//GEN-LAST:event_tambah_pengiriman_buttonActionPerformed
-
-    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-        startTimer();
-    }//GEN-LAST:event_jPanel3MouseEntered
+    }//GEN-LAST:event_tambah_pengiriman_button3ActionPerformed
     
     private void startTimer(){
-        // Create a timer that triggers every 1 second
-        timer = new Timer(1000, new ActionListener() {
+        // Create a timer that triggers every 2 second
+        timer = new Timer(2000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Call the function to update the table model
@@ -701,6 +1122,42 @@ public class DashboardUI extends javax.swing.JFrame {
     private void updateTableModel() {
         // Set the table model using the DatabaseConnect.populatePermintaanTable() method
         jTable1.setModel(DatabaseConnect.populatePermintaanTable());
+        jTable2.setModel(DatabaseConnect.populatePengirimanTable());
+        jTable3.setModel(DatabaseConnect.populatePersediaanTable());
+    }
+    
+    private void insertPermintaanRecord() {
+        // Get input data
+        String kodePemesanan = kode_pesanan_field.getText();
+        String pelanggan = pelanggan_field1.getText();
+        String jenisProduk = jenis_produk_field1.getText();
+        int jumlahPemesanan = Integer.parseInt(jumlah_pesanan_field1.getText());
+        String statusPemesanan = (String) status_pemesanan_field1.getSelectedItem();
+
+        // Get the selected date from the JDateChooser
+        java.util.Date rawDate = tanggal_pesanan_field1.getDate();
+
+        //Optionally, you can format the date as needed
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String tanggalPemesanan = dateFormat.format(rawDate);
+
+        // Check if any field is empty
+        // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
+        //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+        //    return;
+        // }
+
+        // Send data to query function
+        boolean success = DatabaseConnect.insertPermintaanRecord(kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan);
+
+        // Reset fields if insertion is successful
+        if (success) {
+            kode_pesanan_field.setText("");
+            pelanggan_field1.setText("");
+            jenis_produk_field1.setText("");
+            jumlah_pesanan_field1.setText("");
+            tanggal_pesanan_field1.setDate(null); // Clear the date chooser
+        }
     }
     
     private void insertPengirimanRecord() {
@@ -761,8 +1218,9 @@ public class DashboardUI extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel addnew;
+    private javax.swing.JPanel addnew1;
+    private javax.swing.JPanel addnew2;
     private javax.swing.JTextField biaya_pengiriman_field;
-    private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_logout;
     private javax.swing.JPanel button_container;
     private javax.swing.JPanel card;
@@ -775,8 +1233,11 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JPanel company_name;
     private javax.swing.JPanel company_number;
     private javax.swing.JPanel dashboard;
+    private com.toedter.calendar.JDateChooser exp_date_field;
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JButton jButton1;
+    private javax.swing.Box.Filler filler3;
+    private javax.swing.Box.Filler filler4;
+    private javax.swing.JTextField id_barang_field;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -787,21 +1248,23 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -809,26 +1272,56 @@ public class DashboardUI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField7;
     private javax.swing.JComboBox<String> jenis_pengiriman_field;
     private javax.swing.JTextField jenis_produk_field;
+    private javax.swing.JTextField jenis_produk_field1;
+    private javax.swing.JTextField jumlah_field;
+    private javax.swing.JTextField jumlah_pesanan_field1;
+    private javax.swing.JTextField kategori_field;
     private java.awt.Label kirim1;
+    private java.awt.Label kirim10;
+    private java.awt.Label kirim11;
+    private java.awt.Label kirim12;
+    private java.awt.Label kirim14;
+    private java.awt.Label kirim15;
+    private java.awt.Label kirim16;
+    private java.awt.Label kirim17;
+    private java.awt.Label kirim18;
+    private java.awt.Label kirim19;
     private java.awt.Label kirim2;
     private java.awt.Label kirim3;
     private java.awt.Label kirim4;
     private java.awt.Label kirim5;
     private java.awt.Label kirim6;
+    private java.awt.Label kirim7;
+    private java.awt.Label kirim8;
+    private java.awt.Label kirim9;
     private javax.swing.JTextField kode_pemesanan_field;
+    private javax.swing.JTextField kode_pesanan_field;
     private javax.swing.JScrollPane listitem;
+    private javax.swing.JScrollPane listitem1;
+    private javax.swing.JTextField lokasi_field;
+    private javax.swing.JTextField nama_barang_field;
     private javax.swing.JTextField pelanggan_field;
+    private javax.swing.JTextField pelanggan_field1;
     private javax.swing.JPanel pengiriman;
     private javax.swing.JLabel product_title;
     private javax.swing.JLabel request_title;
     private javax.swing.JPanel require;
     private javax.swing.JLabel send_title;
     private javax.swing.JPanel setting;
+    private javax.swing.JComboBox<String> status_pemesanan_field1;
     private javax.swing.JPanel supply;
-    private javax.swing.JButton tambah_pengiriman_button;
+    private javax.swing.JButton tambah_pengiriman_button1;
+    private javax.swing.JButton tambah_pengiriman_button2;
+    private javax.swing.JButton tambah_pengiriman_button3;
     private com.toedter.calendar.JDateChooser tanggal_pengiriman_field;
+    private com.toedter.calendar.JDateChooser tanggal_pesanan_field1;
     private java.awt.Label title;
+    private java.awt.Label title1;
+    private java.awt.Label title2;
     private javax.swing.JPanel title_container;
     private javax.swing.JTable transaction_table;
+    private javax.swing.JButton ubah_pengiriman_button;
+    private javax.swing.JButton ubah_permintaan_button;
+    private javax.swing.JButton ubah_persediaan_button;
     // End of variables declaration//GEN-END:variables
 }

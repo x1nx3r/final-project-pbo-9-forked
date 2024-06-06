@@ -5,17 +5,18 @@
 package com.kel9.fproject;
 
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author acer
+ * @author x1nx3r
  */
-public class Permintaan extends javax.swing.JFrame {
+public class PengirimanUbah extends javax.swing.JFrame {
 
     /**
-     * Creates new form Permintaan
+     * Creates new form PengirimanUbah
      */
-    public Permintaan() {        
+    public PengirimanUbah() {
         initComponents();
     }
 
@@ -38,9 +39,9 @@ public class Permintaan extends javax.swing.JFrame {
         kode_pemesanan_field = new javax.swing.JTextField();
         gap6 = new javax.swing.JSeparator();
         code_input5 = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         gap10 = new javax.swing.JSeparator();
-        tanggal_pemesanan_field = new com.toedter.calendar.JDateChooser();
+        jumlah_pesanan_field = new javax.swing.JTextField();
         gap13 = new javax.swing.JSeparator();
         code_input1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -50,23 +51,22 @@ public class Permintaan extends javax.swing.JFrame {
         code_input6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         gap11 = new javax.swing.JSeparator();
-        pelanggan_field = new javax.swing.JTextField();
+        biaya_pengiriman_field = new javax.swing.JTextField();
         gap12 = new javax.swing.JSeparator();
         code_input2 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         gap4 = new javax.swing.JSeparator();
-        jumlah_pesanan_field = new javax.swing.JTextField();
+        tanggal_pengiriman_field = new com.toedter.calendar.JDateChooser();
         gap8 = new javax.swing.JSeparator();
         code_input3 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         gap5 = new javax.swing.JSeparator();
-        status_pemesanan_field = new javax.swing.JComboBox<>();
+        jenis_pengiriman_field = new javax.swing.JComboBox<>();
         gap9 = new javax.swing.JSeparator();
         code_input4 = new javax.swing.JPanel();
         add_btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(1000, 209));
 
         jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.Y_AXIS));
 
@@ -79,7 +79,7 @@ public class Permintaan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 173, 181));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("PERMINTAAN");
+        jLabel1.setText("UBAH DATA PENGIRIMAN");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         title_container.add(jLabel1);
@@ -118,18 +118,23 @@ public class Permintaan extends javax.swing.JFrame {
         code_input5.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input5.setLayout(new javax.swing.BoxLayout(code_input5, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel10.setText("Tanggal Pemesanan");
-        code_input5.add(jLabel10);
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel8.setText("Pelanggan");
+        code_input5.add(jLabel8);
 
         gap10.setPreferredSize(new java.awt.Dimension(50, 20));
         gap10.setRequestFocusEnabled(false);
         code_input5.add(gap10);
 
-        tanggal_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        tanggal_pemesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        tanggal_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 24));
-        code_input5.add(tanggal_pemesanan_field);
+        jumlah_pesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        jumlah_pesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        jumlah_pesanan_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        jumlah_pesanan_field.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jumlah_pesanan_fieldActionPerformed(evt);
+            }
+        });
+        code_input5.add(jumlah_pesanan_field);
 
         jPanel1.add(code_input5);
 
@@ -170,22 +175,22 @@ public class Permintaan extends javax.swing.JFrame {
         code_input6.setLayout(new javax.swing.BoxLayout(code_input6, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel11.setText("Pelanggan");
+        jLabel11.setText("Biaya Kirim");
         code_input6.add(jLabel11);
 
         gap11.setPreferredSize(new java.awt.Dimension(50, 20));
         gap11.setRequestFocusEnabled(false);
         code_input6.add(gap11);
 
-        pelanggan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        pelanggan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        pelanggan_field.setPreferredSize(new java.awt.Dimension(300, 20));
-        pelanggan_field.addActionListener(new java.awt.event.ActionListener() {
+        biaya_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        biaya_pengiriman_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        biaya_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 20));
+        biaya_pengiriman_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pelanggan_fieldActionPerformed(evt);
+                biaya_pengiriman_fieldActionPerformed(evt);
             }
         });
-        code_input6.add(pelanggan_field);
+        code_input6.add(biaya_pengiriman_field);
 
         jPanel1.add(code_input6);
 
@@ -197,23 +202,18 @@ public class Permintaan extends javax.swing.JFrame {
         code_input2.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input2.setLayout(new javax.swing.BoxLayout(code_input2, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel8.setText("Jumlah Pesanan");
-        code_input2.add(jLabel8);
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel10.setText("Tanggal Pengiriman");
+        code_input2.add(jLabel10);
 
         gap4.setPreferredSize(new java.awt.Dimension(50, 20));
         gap4.setRequestFocusEnabled(false);
         code_input2.add(gap4);
 
-        jumlah_pesanan_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
-        jumlah_pesanan_field.setMinimumSize(new java.awt.Dimension(300, 24));
-        jumlah_pesanan_field.setPreferredSize(new java.awt.Dimension(300, 20));
-        jumlah_pesanan_field.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jumlah_pesanan_fieldActionPerformed(evt);
-            }
-        });
-        code_input2.add(jumlah_pesanan_field);
+        tanggal_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 2147483647));
+        tanggal_pengiriman_field.setMinimumSize(new java.awt.Dimension(300, 24));
+        tanggal_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        code_input2.add(tanggal_pengiriman_field);
 
         jPanel1.add(code_input2);
 
@@ -226,23 +226,23 @@ public class Permintaan extends javax.swing.JFrame {
         code_input3.setLayout(new javax.swing.BoxLayout(code_input3, javax.swing.BoxLayout.LINE_AXIS));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel9.setText("Status Pemesanan");
+        jLabel9.setText("Jasa Kirim");
         code_input3.add(jLabel9);
 
         gap5.setPreferredSize(new java.awt.Dimension(50, 20));
         gap5.setRequestFocusEnabled(false);
         code_input3.add(gap5);
 
-        status_pemesanan_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Diajukan", "Selesai", "Dibatalkan" }));
-        status_pemesanan_field.setLightWeightPopupEnabled(false);
-        status_pemesanan_field.setMaximumSize(new java.awt.Dimension(300, 32767));
-        status_pemesanan_field.setPreferredSize(new java.awt.Dimension(300, 24));
-        status_pemesanan_field.addActionListener(new java.awt.event.ActionListener() {
+        jenis_pengiriman_field.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Same Day", "Cepat", "Reguler", "Kargo" }));
+        jenis_pengiriman_field.setLightWeightPopupEnabled(false);
+        jenis_pengiriman_field.setMaximumSize(new java.awt.Dimension(300, 32767));
+        jenis_pengiriman_field.setPreferredSize(new java.awt.Dimension(300, 24));
+        jenis_pengiriman_field.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                status_pemesanan_fieldActionPerformed(evt);
+                jenis_pengiriman_fieldActionPerformed(evt);
             }
         });
-        code_input3.add(status_pemesanan_field);
+        code_input3.add(jenis_pengiriman_field);
 
         jPanel1.add(code_input3);
 
@@ -254,7 +254,7 @@ public class Permintaan extends javax.swing.JFrame {
         code_input4.setPreferredSize(new java.awt.Dimension(1197, 40));
         code_input4.setLayout(new java.awt.CardLayout());
 
-        add_btn.setText("Tambah");
+        add_btn.setText("Ubah");
         add_btn.setMaximumSize(new java.awt.Dimension(200, 50));
         add_btn.setPreferredSize(new java.awt.Dimension(100, 24));
         add_btn.addActionListener(new java.awt.event.ActionListener() {
@@ -279,100 +279,76 @@ public class Permintaan extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
-        insertPermintaanRecord();
-    }//GEN-LAST:event_add_btnActionPerformed
-
     private void kode_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kode_pemesanan_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_kode_pemesanan_fieldActionPerformed
-
-    private void status_pemesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_status_pemesanan_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_status_pemesanan_fieldActionPerformed
-
-    private void jumlah_pesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jumlah_pesanan_fieldActionPerformed
-
-    private void pelanggan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pelanggan_fieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pelanggan_fieldActionPerformed
 
     private void jenis_produk_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_produk_fieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jenis_produk_fieldActionPerformed
 
-    private void insertPermintaanRecord() {
+    private void biaya_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_biaya_pengiriman_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_biaya_pengiriman_fieldActionPerformed
+
+    private void jumlah_pesanan_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jumlah_pesanan_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jumlah_pesanan_fieldActionPerformed
+
+    private void add_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add_btnActionPerformed
+        modifyPengirimanRecord();
+    }//GEN-LAST:event_add_btnActionPerformed
+
+    private void jenis_pengiriman_fieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jenis_pengiriman_fieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jenis_pengiriman_fieldActionPerformed
+    private void modifyPengirimanRecord() {
         // Get input data
         String kodePemesanan = kode_pemesanan_field.getText();
-        String pelanggan = pelanggan_field.getText();
+        String pelanggan = biaya_pengiriman_field.getText();
         String jenisProduk = jenis_produk_field.getText();
-        int jumlahPemesanan = Integer.parseInt(jumlah_pesanan_field.getText());
-        String statusPemesanan = (String) status_pemesanan_field.getSelectedItem();
+        String biayaKirim = biaya_pengiriman_field.getText();
+        String jasaKirim = (String) jenis_pengiriman_field.getSelectedItem();
 
         // Get the selected date from the JDateChooser
-        java.util.Date rawDate = tanggal_pemesanan_field.getDate();
+        java.util.Date rawDate = tanggal_pengiriman_field.getDate();
+        String tanggalKirim = null;
+        if (rawDate != null) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            tanggalKirim = dateFormat.format(rawDate);
+        }
 
-        //Optionally, you can format the date as needed
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String tanggalPemesanan = dateFormat.format(rawDate);
+        // Call the database modify function
+        boolean success = DatabaseConnect.modifyPengirimanRecord(kodePemesanan, pelanggan, jenisProduk, biayaKirim, jasaKirim, tanggalKirim);
 
-        // Check if any field is empty
-        // if (kodePemesanan.isEmpty() || pelanggan.isEmpty() || jenisProduk.isEmpty() || formattedDate.isEmpty()) {
-        //    JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        //    return;
-        // }
-
-        // Send data to query function
-        boolean success = DatabaseConnect.insertPermintaanRecord(kodePemesanan, tanggalPemesanan, jenisProduk, pelanggan, jumlahPemesanan, statusPemesanan);
-
+        // Show success or failure message
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Record updated successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Failed to update the record.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
         // Reset fields if insertion is successful
         if (success) {
             kode_pemesanan_field.setText("");
-            pelanggan_field.setText("");
+            biaya_pengiriman_field.setText("");
             jenis_produk_field.setText("");
-            jumlah_pesanan_field.setText("");
-            tanggal_pemesanan_field.setDate(null); // Clear the date chooser
+            biaya_pengiriman_field.setText("");
+            tanggal_pengiriman_field.setDate(null); // Clear the date chooser
+            jenis_pengiriman_field.setSelectedItem(null);
         }
     }
-    
-    private boolean sendToQueryFunction(String kodePemesanan, String pelanggan, String jenisProduk, String tanggalPemesanan, String jumlahPemesanan, String statusPemesanan) {
-        // Simulate database insertion
-        try {
-            // Perform the database insertion logic here
-            // For demonstration purposes, we'll print the values instead of actual database operations
-            System.out.println("Inserting into database:");
-            System.out.println("Kode Pemesanan: " + kodePemesanan);
-            System.out.println("Pelanggan: " + pelanggan);
-            System.out.println("Jenis Produk: " + jenisProduk);
-            System.out.println("Tanggal Pemesanan: " + tanggalPemesanan);
-            System.out.println("Jumlah Pemesanan: " + jumlahPemesanan);
-            System.out.println("Status Pemesanan: " + statusPemesanan);
-
-            // Simulate successful insertion
-            return true;
-        } catch (Exception e) {
-            // Log any exceptions that occur during database insertion
-            e.printStackTrace();
-            return false;
-        }
-    }
-    
-    
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_btn;
+    private javax.swing.JTextField biaya_pengiriman_field;
     private javax.swing.JPanel code_input;
     private javax.swing.JPanel code_input1;
     private javax.swing.JPanel code_input2;
@@ -401,12 +377,11 @@ public class Permintaan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> jenis_pengiriman_field;
     private javax.swing.JTextField jenis_produk_field;
     private javax.swing.JTextField jumlah_pesanan_field;
     private javax.swing.JTextField kode_pemesanan_field;
-    private javax.swing.JTextField pelanggan_field;
-    private javax.swing.JComboBox<String> status_pemesanan_field;
-    private com.toedter.calendar.JDateChooser tanggal_pemesanan_field;
+    private com.toedter.calendar.JDateChooser tanggal_pengiriman_field;
     private javax.swing.JPanel title_container;
     // End of variables declaration//GEN-END:variables
 }
